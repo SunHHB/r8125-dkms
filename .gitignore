@@ -1,4 +1,3 @@
-debian/.debhelper*
-debian/debhelper*
-debian/realtek-r8125-dkms*
-debian/files
+prerm-with-ver
+*.tar.bz2
+*.deb
