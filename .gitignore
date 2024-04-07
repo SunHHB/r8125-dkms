@@ -1,3 +1,4 @@
-prerm-with-ver
+/src
+/pkg
 *.tar.bz2
 *.deb

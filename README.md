@@ -23,3 +23,5 @@ RealTek R8125B 网卡驱动的 DKMS 版本，启用 TX 多队列，启用 RSS，
 ```shell
 makedeb
 ```
+
+注：现在RealTEK针对下载驱动启用了验证码验证，所以 [makedeb](https://docs.makedeb.org/) 无法自动下载RealTEK的驱动源码压缩包，这时，你需要自行前往 [官网](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software) 将 2.5G Ethernet LINUX driver r8125 驱动手动下载到仓库根目录，然后再运行上述命令。
