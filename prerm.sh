@@ -1,25 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
-NAME="${DPKG_MAINTSCRIPT_PACKAGE%-*}"
-PACKAGE_NAME="${DPKG_MAINTSCRIPT_PACKAGE}"
-CVERSION=$(dpkg-query -W -f='${Version}' "${PACKAGE_NAME}" | awk -F "-" '{print $1}')
+DKMS_PACKAGE_NAME="${DPKG_MAINTSCRIPT_PACKAGE}"
+DKMS_NAME="${DPKG_MAINTSCRIPT_PACKAGE%-*}"
+DKMS_VERSION=$(dpkg-query -W -f='${Version}' "$DKMS_PACKAGE_NAME" | awk -F "-" '{print $1}')
 
 case "$1" in
     remove|upgrade|deconfigure)
-        if [[ -n $(dkms status -m "${NAME}") ]]; then
-            dkms remove -m "${NAME}" -v "${CVERSION}" --all
+        if [ "$(dkms status -m $DKMS_NAME -v $DKMS_VERSION)" ]; then
+            dkms remove -m $DKMS_NAME -v $DKMS_VERSION --all
         fi
-        ;;
-
-    failed-upgrade)
-        ;;
-
-    *)
-        echo "prerm called with unknown argument '$1'" >&2
-        exit 1
-        ;;
+    ;;
 esac
 
 exit 0
