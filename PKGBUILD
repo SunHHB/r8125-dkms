@@ -2,8 +2,8 @@
 
 _pkgname=r8125
 pkgname="${_pkgname}-dkms"
-pkgver=9.013.02
-pkgrel=2
+pkgver=9.014.01
+pkgrel=1
 url="https://www.realtek.com/Download/List?cate_id=584"
 pkgdesc="dkms source for the r8125 network driver"
 license=('GPL-2.0-only')
@@ -17,11 +17,9 @@ prerm="prerm.sh"
 optdepends=('linux-headers-amd64: Build the module for Debian kernel'
             'proxmox-default-headers: Build the module for Proxmox VE kernel')
 source=("http://rtitwww.realtek.com/rtdrivers/cn/nic1/${_pkgname}-${pkgver}.tar.bz2"
-        "dkms.conf"
-        "kernel-6.9.patch")
-sha256sums=('d36410ee99c956f250d9cd08340d8c36567d190f420a8ee128ff6e51225aac0c'
-            '1e5fd3543bc30e1783acf6235e22a1e7d28db3ef136f3aac5b34a944315396a6'
-            '74823e51fbb88302892d3019c0ffa792e68ec4932731867b1b5f9af9edaac728')
+        "dkms.conf")
+sha256sums=('f006aa95501738ca55c522812c9d1b473ac781675f3ad88ce341a09316b8aa13'
+            '1e5fd3543bc30e1783acf6235e22a1e7d28db3ef136f3aac5b34a944315396a6')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -31,7 +29,6 @@ prepare() {
         -e "s|ENABLE_MULTIPLE_TX_QUEUE = n|ENABLE_MULTIPLE_TX_QUEUE = y|" \
         -e "s|ENABLE_RSS_SUPPORT = n|ENABLE_RSS_SUPPORT = y|" \
         -i "src/Makefile"
-    patch -Np1 -i ../kernel-6.9.patch
 }
 
 package() {
