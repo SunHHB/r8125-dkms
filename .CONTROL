@@ -1,9 +1,10 @@
 Package: r8125-dkms
-Version: 9.014.01-1
+Version: 9.015.00-1
 Description: dkms source for the r8125 network driver
+Architecture: all
 License: GPL-2.0-only
 Maintainer: Evine Deng <evinedeng@hotmail.com>
-Installed-Size: 1064
+Installed-Size: 1044
 Homepage: https://www.realtek.com/Download/List?cate_id=584
 Depends: dkms
 Recommends: linux-headers-amd64, proxmox-default-headers
