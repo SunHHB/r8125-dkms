@@ -2,11 +2,13 @@
 
 _pkgname=r8125
 pkgname="${_pkgname}-dkms"
-pkgver=9.015.00
+pkgver=9.016.00
 pkgrel=1
+priority=optional
+section=non-free/kernel
 url="https://www.realtek.com/Download/List?cate_id=584"
 pkgdesc="dkms source for the r8125 network driver"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 arch=('all')
 depends=('dkms')
 provides=("${pkgname}")
@@ -18,7 +20,7 @@ optdepends=('linux-headers-amd64: Build the module for Debian kernel'
             'proxmox-default-headers: Build the module for Proxmox VE kernel')
 source=("http://rtitwww.realtek.com/rtdrivers/cn/nic1/${_pkgname}-${pkgver}.tar.bz2"
         "dkms.conf")
-sha256sums=('7d6906336c3ad960c3e7c0299ad655659d7110bdc933c5b568b7f2536cb8ffc3'
+sha256sums=('cd1955dd07d2f5a6faaa210ffc4e8af992421295a32ab6ddcfa759bed9eba922'
             '1e5fd3543bc30e1783acf6235e22a1e7d28db3ef136f3aac5b34a944315396a6')
 
 prepare() {
